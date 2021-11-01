@@ -128,6 +128,7 @@
 .nav .category-menu .left-logo {
     width: 200px;
     height: 30px;
+    background-color: green;
     position: relative;
 }
 .nav .category-menu .left-logo img {
@@ -153,61 +154,9 @@
 
 /* 3. ============= 分类导航和banner ============= */
 .menu{
-    height: 430px;
-}
-.menu .sideMenu {
-    height: 430px;
-    width: 200px;
-}
-.menu .sideMenu ul {
-    height: 430px;
-    width: 200px;
-    background-color: #f3f3f3;
-    position: relative;
-}
-.menu .sideMenu ul li {
-    height: 30px;
-    line-height: 30px;
-    width: 200px;
-    text-indent: 20px;
-}
-.menu .sideMenu ul li a {
-    color: #335533;
-    text-decoration: none;
-}
-.menu .sideMenu ul li:hover {
-    background-color: #fff;
-}
-.menu .sideMenu ul li:hover a {
-    color: #ff6700;
-}
-.menu .sideMenu ul li .title {
-    width: 198px;
-    height: 30px;
-    line-height: 30px;
-}
+    height: 500px;
+    background-color: #333;
 
-
-.menu .sideMenu ul li:hover .title {
-    background-color: #fff;
-    position: absolute;
-    z-index: 99;
-}
-.menu .sideMenu ul li:hover .subMenu {
-    display: block;
-}
-.menu .sideMenu ul li .subMenu {
-    position: absolute;
-    top: 0px;
-    left: 198px;
-    border: 2px solid #ff6700;
-    width: 500px;
-    height: 428px;
-    display: none;
-}
-.menu .banner {
-    height: 430px;
-    width: 1000px;
 }
 /* 4. ============= 今日推荐 =============  */
 .recommend{
