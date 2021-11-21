@@ -60,12 +60,136 @@ $(function() {
         $(this).find('.desc').show(); // 显示详情
     });
 
+    /* 服装轮播 */
+    $('#clothes-banner').tyslide({
+        boxh: 336, //轮播的高度
+        w: 426, //图片宽度
+        h: 336, //图片高度
+        isShow: true, //是否显示控制按钮
+        isShowBtn: false, //是否显示左右按钮
+        controltop: 10, //控制器按钮上下偏移距离 
+        controlsW: 20, //控制按钮宽度
+        controlsH: 5, //控制按钮高度
+        radius: 0, //圆角度数
+        controlsColor: "#d7d7d7", //普通控制按钮的颜色
+        controlsCurrentColor: "#00ff00", //当前控制按钮的颜色
+    });
     /* 服装 table切换 */
-    var $lis = $('.clothes .clothes-nav > li');
+    $('.clothes .clothes-nav li').mouseenter(function() {
+        // 导航切换
+        $(this).addClass('active-1').siblings('li').removeClass('active-1')
+            // 获取索引
+        var index = $(this).index();
+        $('.clothe .clothes-content > .clothes-list').eq(index).show().siblings('.clothes-list').hide();
+    })
     $lis.mouseover(function() {
         // 给自己添加激活类active 把兄弟的都干掉
         $(this).addClass('active-1').siblings().removeClass('active-1');
         // 获取index
         var index = $(this).index();
     });
+    /* 户外运动table切换 */
+    $('#sports-banner').tyslide({
+        boxh: 336, //轮播的高度
+        w: 426, //图片宽度
+        h: 336, //图片高度
+        isShow: true, //是否显示控制按钮
+        isShowBtn: true, //是否显示左右按钮
+        controltop: 10, //控制器按钮上下偏移距离 
+        controlsW: 20, //控制按钮宽度
+        controlsH: 5, //控制按钮高度
+        radius: 0, //圆角度数
+        controlsColor: "#d7d7d7", //普通控制按钮的颜色
+        controlsCurrentColor: "#00ff00", //当前控制按钮的颜色
+    });
+    $('.sport .clothes-nav li').mouseenter(function() {
+        // 导航切换
+        $(this).addClass('active-1').siblings('li').removeClass('active-1')
+            // 获取索引
+        var index = $(this).index();
+        $('.sport .clothes-content > .clothes-list').eq(index).show().siblings('.clothes-list').hide();
+    })
+
+    /* 童装table切换 */
+    $('#children-clothes-banner').tyslide({
+        boxh: 336, //轮播的高度
+        w: 426, //图片宽度
+        h: 336, //图片高度
+        isShow: true, //是否显示控制按钮
+        isShowBtn: true, //是否显示左右按钮
+        controltop: 10, //控制器按钮上下偏移距离 
+        controlsW: 20, //控制按钮宽度
+        controlsH: 5, //控制按钮高度
+        radius: 0, //圆角度数
+        controlsColor: "#d7d7d7", //普通控制按钮的颜色
+        controlsCurrentColor: "#00ff00", //当前控制按钮的颜色
+    });
+    $('.children-clothes .clothes-nav li').mouseenter(function() {
+        // 导航切换
+        $(this).addClass('active-1').siblings('li').removeClass('active-1')
+            // 获取索引
+        var index = $(this).index();
+        $('.children-clothes .clothes-content > .clothes-list').eq(index).show().siblings('.clothes-list').hide();
+    })
+
+    /* 家具 */
+    $('#daily-banner').tyslide({
+        boxh: 336, //轮播的高度
+        w: 426, //图片宽度
+        h: 336, //图片高度
+        isShow: true, //是否显示控制按钮
+        isShowBtn: true, //是否显示左右按钮
+        controltop: 10, //控制器按钮上下偏移距离 
+        controlsW: 20, //控制按钮宽度
+        controlsH: 5, //控制按钮高度
+        radius: 0, //圆角度数
+        controlsColor: "#d7d7d7", //普通控制按钮的颜色
+        controlsCurrentColor: "#00ff00", //当前控制按钮的颜色
+    });
+    $('.daily .clothes-nav li').mouseenter(function() {
+        // 导航切换
+        $(this).addClass('active-1').siblings('li').removeClass('active-1')
+            // 获取索引
+        var index = $(this).index();
+        $('.daily .clothes-content > .clothes-list').eq(index).show().siblings('.clothes-list').hide();
+    })
+
+    /* 推广商品切换 */
+    $('.promotion .top ul li').mouseenter(function() {
+        //导航激活类的切换
+        $(this).addClass('active').siblings().removeClass('active')
+
+        // 内容切换
+        // 获取对应的索引
+        var index = $(this).index(); // 0=> left:0*1170px, 1 => left: -1*1170px, 3 => left: -3*1170px
+        // 左右移动
+        $('.promotion .content .inner-box').animate({
+            'left': -index * 1170
+        }, 1000)
+
+        // 上下移动
+        // $('.promotion .content .inner-box').animate({
+        //     'top': index * 600
+        // }, 1000)
+    })
+
+    /* 返回顶部 */
+    //绑定滚动事件
+    $(document).scroll(function() {
+        //获取距离顶部的位置
+        var topDistance = $('html,body').scrollTop();
+        // 判断
+        if (topDistance > 500) {
+            $('.backToTop').fadeIn();
+        } else {
+            $('.backToTop').fadeOut();
+        }
+    })
+
+    // 返回顶部功能
+    $('.backToTop').click(function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 300)
+    })
 })
