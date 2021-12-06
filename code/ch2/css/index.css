@@ -1394,9 +1394,8 @@
 /* =====返回顶部===== */
 
 .backToTop {
-    width: 30px;
-    height: 50px;
-    background-color: red;
+    width: 40px;
+    height: 40px;
     /* 定位 */
     position: fixed;
     bottom: 100px;
