@@ -20,6 +20,7 @@ $(function() {
         //让表格中的选择框状态保持一致 且 结算中的选择框 状态保持一致
         $bodyInput.prop('checked', state);
         $allPriceInput.prop('checked', state);
+        // 调用总价函数
         tol();
     })
 
@@ -31,6 +32,7 @@ $(function() {
         //上面的全选和表格中的input 需要状态一致
         $bodyInput.prop('checked', state);
         $theadInput.prop('checked', state);
+        // 调用总价函数
         tol();
     })
 
@@ -51,9 +53,7 @@ $(function() {
         //把状态用来改变全选框
         $theadInput.prop('checked', flag)
         $allPriceInput.prop('checked', flag)
-
-        // 渲染到总价对应的位置
-
+            // 调用总价函数
         tol();
     })
 
@@ -71,6 +71,7 @@ $(function() {
         $nextInput.val(oldvalue)
             //小计
         subTotalPrice(oldvalue, $(this));
+        // 调用总价函数
         tol();
     })
 
@@ -88,6 +89,7 @@ $(function() {
         $prevInput.val(oldvalue)
             //小计
         subTotalPrice(oldvalue, $(this));
+        // 调用总价函数
         tol();
     })
 
@@ -102,22 +104,50 @@ $(function() {
     $('.del').click(function() {
         //删除整行
         $(this).closest('tr').remove();
-        tol();
+        calcGoodsCount(); // 调用商品总数量
+
     })
-    tol()
-        //计算总价的函数
+
+    //计算总价和选中数量的函数
     function tol() {
         //总价
         var totalPrice = 0;
         //数量
-        var number1 = 0;
-        $bodyInput.each(function() {
-            if ($(this).prop('checked')) {
-                totalPrice += parseFloat($(this).closest('tr').find('.subprice').text());
-                number1++;
+        var count = 0;
+        // 循环表格中的所有选择框 如果是选中的状态 那么计算总价
+        $('table tbody input[type=checkbox]').each(function(i, input) {
+            if ($(input).prop('checked')) {
+                // 累加价格
+                totalPrice += parseFloat($(input).closest('tr').find('.subprice').text());
+                // 自增
+                count++;
             }
         })
-        $('.toltal').text('总价：' + totalPrice.toFixed(2))
-        $('.number').text('已选择' + number1 + '件商品')
+
+        // 总价渲染到相应的位置
+        $('.toltal').text('总价：' + totalPrice.toFixed(2));
+        // 数量渲染到相应的位置
+        $('.number').text('已选择' + count + '件商品');
     }
+
+    // 全部商品
+    function calcGoodsCount() {
+        $('.goodsCount').text($('table tbody tr').length)
+    }
+    calcGoodsCount(); // 一进入页面自动调用一次
+
+    // 删除选中的商品
+    $('.deleteChecked').on('click', function() {
+        // 循环单选框 如果选中 就干掉自己(删除的一行)
+        $('table tbody input[type=checkbox]').each(function(i, input) {
+            if ($(this).prop('checked')) {
+                $(this).closest('tr').remove();
+            }
+        })
+
+        // 计算总价
+        tol();
+        // 计算商品总数量
+        calcGoodsCount();
+    })
 })
