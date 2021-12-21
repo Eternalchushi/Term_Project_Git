@@ -118,7 +118,7 @@ $(function() {
         $('table tbody input[type=checkbox]').each(function(i, input) {
             if ($(input).prop('checked')) {
                 // 累加价格
-                totalPrice += parseFloat($(input).closest('tr').find('.subprice').text());
+                totalPrice = totalPrice + parseFloat($(input).closest('tr').find('.subprice').text());
                 // 自增
                 count++;
             }
