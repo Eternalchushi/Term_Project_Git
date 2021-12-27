@@ -113,7 +113,8 @@
 
 /* 上下滑动 */
 
-.out-box {
+
+/* .out-box {
     overflow: hidden;
 }
 
@@ -121,13 +122,12 @@
     height: 2000px;
     position: relative;
     top: 0px;
-}
+} */
 
 
 /* 左右滑动的版本 */
 
-
-/* .out-box {
+.out-box {
     overflow: hidden;
 }
 
@@ -135,7 +135,7 @@
     width: 4800px;
     position: relative;
     left: 0px;
-} */
+}
 
 .guess-you-like-content li {
     width: 1200px;
