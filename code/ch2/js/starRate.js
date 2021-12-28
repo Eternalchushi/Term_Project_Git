@@ -5,29 +5,15 @@ $(function() {
 
     // 写一个创建星星评分的函数 挂在window上
     window.createStarRate = function(score) {
+        // $.fn.createStarRate = function(score) { // 原型扩展
         // 满星
-        var on = '<span class="on iconfont icon-xingxing"></span>';
+        var on = '<span class="on iconfont icon-star-full"></span>';
 
         // 半星
-        var half = '<span class="half iconfont icon-banxing"></span>';
+        var half = '<span class="half iconfont icon-star-half"></span>';
 
         // 灰色星星
-        var off = '<span class="off iconfont icon-xingxing"></span>';
-
-        // 样式
-        $(on).css({
-            fontSize: '50px',
-            color: 'gold'
-        })
-        $(half).css({
-            fontSize: '42px',
-            color: 'gold'
-        })
-        $(off).css({
-            fontSize: '50px',
-            color: '#ccc'
-        })
-
+        var off = '<span class="off iconfont icon-star"></span>';
 
 
         // 计算分数
@@ -59,6 +45,7 @@ $(function() {
 
         // 返回
         return rst;
+        // $(this).html(rst); // 扩展
     }
 
 
